@@ -43,34 +43,33 @@ public class Player : MonoBehaviour, Move.IPlayerActions
             movement.SetMoveInput(input);
     }
 
-    // --- Portfolio ---
+    // Vérifie si un champ texte est actif 
+    private bool IsTypingInInputField()
+    {
+        var selected = EventSystem.current.currentSelectedGameObject;
+        if (selected == null) return false;
+
+        TMP_InputField input = selected.GetComponent<TMP_InputField>();
+        return input != null && input.isFocused;
+    }
+   // --- Portfolio ---
     public void OnOpenPortfolio(InputAction.CallbackContext context)
     {
-        if (!context.performed)
-            return;
+        if (!context.performed) return;
+        if (IsTypingInInputField()) return; // plus de duplication
 
-        // Si on est en train d'écrire dans un champ texte
-        if (EventSystem.current.currentSelectedGameObject != null)
-        {
-            TMP_InputField input = EventSystem.current.currentSelectedGameObject.GetComponent<TMP_InputField>();
-
-            if (input != null && input.isFocused)
-                return;
-        }
-
-        // Si le portfolio existe + s'il existe ne pas ouvrir à nouveau
         if (portfolioUI != null && !portfolioUI.PortfolioPanel.activeSelf)
-        {
             portfolioUI.OpenPortfolio();
-        }
     }
+
     // --- Interaction PNJ ---
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if (context.performed && currentInteractable != null)
-        {
+        if (!context.performed) return;
+        if (IsTypingInInputField()) return; // plus de duplication
+
+        if (currentInteractable != null)
             currentInteractable.Interact();
-        }
     }
 
     // --- Détection des PNJ proches ---

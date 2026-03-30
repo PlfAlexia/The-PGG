@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ed433eae3e63e4d819d43858acc63f, type: 3}
   m_Name: QuestionDatabase
   m_EditorClassIdentifier: Assembly-CSharp::QuestionDatabase
-  questions: []
+  questions:
+  - key: bio
+    questionText: "Pr\xE9sente toi "
+  - key: skills
+    questionText: "Quelles sont tes comp\xE9tences ?"
+  - key: project
+    questionText: "D\xE9cris un de tes projet"

@@ -10,10 +10,18 @@ public class PortfolioUI : MonoBehaviour
     // Un seul champ texte qui affiche tout le portfolio
     public TMP_Text portfolioText;
     public ScrollRect scrollRect; // remonte en haut à l'ouverture
+    public RectTransform contentRect;
 
     void Start()
     {
         PortfolioPanel.SetActive(false);
+
+        RectTransform textRect = portfolioText.GetComponent<RectTransform>();
+        textRect.anchorMin = new Vector2(0, 1);
+        textRect.anchorMax = new Vector2(1, 1);
+        textRect.pivot = new Vector2(0.5f, 1);
+        textRect.offsetMin = new Vector2(10, 0);
+        textRect.offsetMax = new Vector2(-10, -20);
     }
 
     public void OpenPortfolio()
@@ -32,14 +40,13 @@ public class PortfolioUI : MonoBehaviour
         portfolioText.text = content;
         PortfolioPanel.SetActive(true);
 
-        // Attend la fin du frame avant de scroller
-        StartCoroutine(ScrollToTop());
+         StartCoroutine(RefreshLayout());
     }
 
-    private IEnumerator ScrollToTop()
+     private IEnumerator RefreshLayout()
     {
-        // Laisse Unity recalculer le layout avant de scroller
         yield return new WaitForEndOfFrame();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(contentRect);
         scrollRect.verticalNormalizedPosition = 1f;
     }
 

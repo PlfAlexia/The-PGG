@@ -1,14 +1,12 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using TMPro;
 
 public class PortfolioUI : MonoBehaviour
 {
     public GameObject PortfolioPanel;
 
-    public TMP_Text bioText;
-    public TMP_Text skillsText;
-    public TMP_Text projectText;
+    // Un seul champ texte qui affiche tout le portfolio
+    public TMP_Text portfolioText;
 
     void Start()
     {
@@ -17,10 +15,18 @@ public class PortfolioUI : MonoBehaviour
 
     public void OpenPortfolio()
     {
-        bioText.text = "Bio : " + DataManager.Instance.GetAnswerOrPlaceholder("bio");
-        skillsText.text = "Skills : " + DataManager.Instance.GetAnswerOrPlaceholder("skills");
-        projectText.text = "Project : " + DataManager.Instance.GetAnswerOrPlaceholder("project");
+        string content = "";
 
+        // Parcourt toutes les clés de la QuestionDatabase
+        foreach (string key in DataManager.Instance.GetAllQuestionKeys())
+        {
+            string question = DataManager.Instance.GetQuestion(key);
+            string answer = DataManager.Instance.GetAnswerOrPlaceholder(key);
+
+            content += $"<b>{question}</b>\n{answer}\n\n";
+        }
+
+        portfolioText.text = content;
         PortfolioPanel.SetActive(true);
     }
 

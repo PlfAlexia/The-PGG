@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, Move.IPlayerActions
 
         portfolioUI = FindFirstObjectByType<PortfolioUI>();
 
-        controls.Player.SetCallbacks(this);
+        controls.Player.SetCallbacks(this); // à comprendre
     }
 
     void OnEnable()

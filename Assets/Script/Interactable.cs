@@ -9,3 +9,5 @@ public class Interactable : MonoBehaviour
         UIManager.Instance.OpenQuestion(questionKey);
     }
 }
+
+// A mettre sur chaque PNJ

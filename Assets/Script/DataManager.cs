@@ -7,28 +7,59 @@ using System.IO;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager Instance;
+    public static DataManager Instance; //instance pour rendre accessible n'importe où dans le jeu
     private string savePath;
+
+    [SerializeField] private QuestionDatabase questionDatabase;
+
 
     Dictionary<string, string> answers = new Dictionary<string, string>();
 
-    void Awake()
+    void Awake() //en commentaire c'est pour rendre plus robuste
     {
+        // if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
+        // DontDestroyOnLoad(gameObject);
         savePath = Application.persistentDataPath + "/save.json";
         LoadData();
     }
 
+    // Délègue simplement au ScriptableObject
     public string GetQuestion(string key)
     {
-        switch(key)
-        {
-            case "bio": return "Présente-toi en quelques mots";
-            case "skills": return "Quelles sont tes compétences ?";
-            case "project": return "Décris un de tes projets";
-            default: return "Question inconnue";
-        }
+        return questionDatabase.GetQuestion(key);
     }
+
+    public bool QuestionExists(string key)
+    {
+        return questionDatabase.HasKey(key);
+    }
+
+    public List<string> GetAllQuestionKeys()
+    {
+        return questionDatabase.GetAllKeys();
+    }
+
+    public void SaveAnswer(string key, string value)
+    {
+        answers[key] = value;
+        SaveToFile(); // sauvegarde automatique
+    }
+
+    /*public string GetAnswer(string key)
+    {
+        if (answers.ContainsKey(key))
+            return answers[key];
+
+        return "Aucune réponse encore...";
+    }*/
+    
+    // vérifier si c'est bien en place 
+    public string GetAnswerOrPlaceholder(string key, string placeholder = "En attente...")
+    {
+        return answers.ContainsKey(key) && !string.IsNullOrEmpty(answers[key]) ? answers[key] : placeholder;
+    }
+
 
     public void SaveToFile()
     {
@@ -61,21 +92,5 @@ public class DataManager : MonoBehaviour
     }
 
 
-    public void SaveAnswer(string key, string value)
-    {
-        answers[key] = value;
-        SaveToFile(); // sauvegarde automatique
-    }
-
-    /*public string GetAnswer(string key)
-    {
-        if (answers.ContainsKey(key))
-            return answers[key];
-
-        return "Aucune réponse encore...";
-    }*/
-    public string GetAnswerOrPlaceholder(string key, string placeholder = "En attente...")
-    {
-        return answers.ContainsKey(key) && !string.IsNullOrEmpty(answers[key]) ? answers[key] : placeholder;
-    }
+    
 }

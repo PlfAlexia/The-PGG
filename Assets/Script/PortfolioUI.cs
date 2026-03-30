@@ -1,5 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class PortfolioUI : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class PortfolioUI : MonoBehaviour
 
     // Un seul champ texte qui affiche tout le portfolio
     public TMP_Text portfolioText;
+    public ScrollRect scrollRect; // remonte en haut à l'ouverture
 
     void Start()
     {
@@ -28,6 +31,16 @@ public class PortfolioUI : MonoBehaviour
 
         portfolioText.text = content;
         PortfolioPanel.SetActive(true);
+
+        // Attend la fin du frame avant de scroller
+        StartCoroutine(ScrollToTop());
+    }
+
+    private IEnumerator ScrollToTop()
+    {
+        // Laisse Unity recalculer le layout avant de scroller
+        yield return new WaitForEndOfFrame();
+        scrollRect.verticalNormalizedPosition = 1f;
     }
 
     public void ClosePortfolio()

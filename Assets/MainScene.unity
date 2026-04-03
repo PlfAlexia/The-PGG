@@ -2357,7 +2357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111489e146a98fa4fb670c66e20101f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionKey: skills
+  sequence: {fileID: 0}
 --- !u!61 &1193096559
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2584,7 +2584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111489e146a98fa4fb670c66e20101f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionKey: project
+  sequence: {fileID: 0}
 --- !u!61 &1242722046
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2737,6 +2737,7 @@ MonoBehaviour:
   questionPanel: {fileID: 84797895}
   questionText: {fileID: 105150383}
   answerInput: {fileID: 2142446920}
+  currentKey: 
 --- !u!4 &1343781468
 Transform:
   m_ObjectHideFlags: 0
@@ -3016,7 +3017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111489e146a98fa4fb670c66e20101f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionKey: bio
+  sequence: {fileID: 11400000, guid: ef9663224f63e0642ad9479d49362838, type: 2}
 --- !u!50 &1780764746
 Rigidbody2D:
   serializedVersion: 5

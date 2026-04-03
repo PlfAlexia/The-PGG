@@ -1,0 +1,18 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+[System.Serializable]
+public class DialogueStep
+{
+    public enum StepType { Normal, Choice, PortfolioInput }
+
+    [TextArea] public string npcText;
+    public StepType type;
+
+    // Remplis si type == Choice
+    public List<string> choices = new List<string>();
+
+    // Remplis si type == PortfolioInput
+    public string dataKey;
+    public string titleKey; // pour sauvegarder le titre de la section
+}

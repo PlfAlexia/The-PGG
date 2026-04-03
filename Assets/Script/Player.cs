@@ -10,7 +10,7 @@ public class Player : MonoBehaviour, Move.IPlayerActions
     private PortfolioUI portfolioUI;
 
     // Pour l'interaction avec les PNJ
-    private Interactable currentInteractable;
+    private NPCDialogue currentNPC;
 
     void Awake()
     {
@@ -66,22 +66,22 @@ public class Player : MonoBehaviour, Move.IPlayerActions
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (IsTypingInInputField()) return; // plus de duplication
+        if (IsTypingInInputField()) return;
 
-        if (currentInteractable != null)
-            currentInteractable.Interact();
+        if (currentNPC != null)
+            currentNPC.Interact();
     }
 
     // --- Détection des PNJ proches ---
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("NPC"))
-            currentInteractable = other.GetComponent<Interactable>();
+            currentNPC = other.GetComponent<NPCDialogue>();
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("NPC") && other.GetComponent<Interactable>() == currentInteractable)
-            currentInteractable = null;
+        if (other.CompareTag("NPC") && other.GetComponent<NPCDialogue>() == currentNPC)
+            currentNPC = null;
     }
 }

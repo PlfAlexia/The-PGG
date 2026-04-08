@@ -6,6 +6,22 @@ public class NPCDialogue : MonoBehaviour
 
     public void Interact()
     {
+        Debug.Log("Interact appelé");
+        Debug.Log("DialogueManager.Instance : " + DialogueManager.Instance);
+        Debug.Log("sequence : " + sequence);
+
+        if (DialogueManager.Instance == null)
+        {
+            Debug.LogError("DialogueManager introuvable !");
+            return;
+        }
+
+        if (sequence == null)
+        {
+            Debug.LogError("Sequence non assignée sur " + gameObject.name);
+            return;
+        }
+
         DialogueManager.Instance.StartDialogue(sequence);
     }
 }

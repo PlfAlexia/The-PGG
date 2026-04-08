@@ -36,9 +36,21 @@ public class DialogueManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        dialoguePanel.SetActive(false);
+        normalZone.SetActive(false);
+        choiceZone.SetActive(false);
+        portfolioZone.SetActive(false);
+    }
+
     // Appelé par NPCDialogue
     public void StartDialogue(DialogueSequence sequence)
     {
+        Debug.Log("StartDialogue appelé");
+        Debug.Log("dialoguePanel : " + dialoguePanel);
+        Debug.Log("Steps count : " + sequence.steps.Count);
+
         currentSequence = sequence;
         currentStepIndex = 0;
         dialoguePanel.SetActive(true);

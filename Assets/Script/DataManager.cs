@@ -21,6 +21,7 @@ public class DataManager : MonoBehaviour
         Instance = this;
         // DontDestroyOnLoad(gameObject);
         savePath = Application.persistentDataPath + "/save.json";
+        Debug.Log("Save path : " + savePath);
         LoadData();
     }
 

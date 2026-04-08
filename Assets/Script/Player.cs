@@ -67,16 +67,19 @@ public class Player : MonoBehaviour, Move.IPlayerActions
     {
         if (!context.performed) return;
         if (IsTypingInInputField()) return;
-
-        if (currentNPC != null)
-            currentNPC.Interact();
+        if (currentNPC == null) return;
+        
+        currentNPC.Interact();
     }
 
     // --- Détection des PNJ proches ---
     void OnTriggerEnter2D(Collider2D other)
     {
+        //Debug.Log("Trigger détecté : " + other.gameObject.name + " tag : " + other.tag);
         if (other.CompareTag("NPC"))
             currentNPC = other.GetComponent<NPCDialogue>();
+        
+            //Debug.Log("NPC assigné : " + currentNPC);
     }
 
     void OnTriggerExit2D(Collider2D other)

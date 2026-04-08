@@ -12,4 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a172a58da63188648bce5a20977bd940, type: 3}
   m_Name: DialogueSequenceBio
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
-  steps: []
+  steps:
+  - npcText: '"Bonjour, comment tu t''appelles ?" '
+    type: 0
+    choices: []
+    dataKey: 
+    titleKey: 
+  - npcText: '"..."'
+    type: 1
+    choices:
+    - 'Bien ! '
+    - Pas mal
+    - Moyen...
+    dataKey: 
+    titleKey: 
+  - npcText: '"Je vois... J''aimerais en savoir plus sur toi !" '
+    type: 0
+    choices: []
+    dataKey: 
+    titleKey: 
+  - npcText: '"Parles moi de toi."'
+    type: 2
+    choices: []
+    dataKey: '"bio"'
+    titleKey: '"bio_title"'

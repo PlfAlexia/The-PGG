@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Déplace le joueur avec linearVelocity
-        rb.linearVelocity = moveInput * moveSpeed;
+        // Bloque le mouvement vertical — horizontal uniquement
+        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, 0f);
     }
 }

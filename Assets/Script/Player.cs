@@ -43,9 +43,12 @@ public class Player : MonoBehaviour, Move.IPlayerActions
             movement.SetMoveInput(input);
     }
 
+
     // Vérifie si un champ texte est actif 
     private bool IsTypingInInputField()
     {
+        if (EventSystem.current == null) return false;
+
         var selected = EventSystem.current.currentSelectedGameObject;
         if (selected == null) return false;
 
@@ -66,9 +69,10 @@ public class Player : MonoBehaviour, Move.IPlayerActions
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
+        Debug.Log("E appuyé — currentNPC : " + currentNPC);
         if (IsTypingInInputField()) return;
         if (currentNPC == null) return;
-        
+        Debug.Log("Appel Interact");
         currentNPC.Interact();
     }
 

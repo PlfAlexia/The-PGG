@@ -28,7 +28,7 @@ MonoBehaviour:
     type: 0
     choices: []
     dataKey: 
-  - npcText: '"Parles moi de toi."'
+  - npcText: '"Parles moi de toi en quelques mots."'
     type: 2
     choices: []
     dataKey: bio

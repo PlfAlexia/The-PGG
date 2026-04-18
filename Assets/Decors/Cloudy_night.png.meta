@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: df6ca8fa7288a4343aaa15d01638248f
+guid: a71a3ee9c11c7ab4ebebaba76712de02
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7101122194624619840
-    second: Cloud_Night_0
+      213: -7708932974942594058
+    second: Cloudy_night_0
   - first:
-      213: 4430154562842843612
-    second: Cloud_Night_1
+      213: 6116737238165288736
+    second: Cloudy_night_1
   - first:
-      213: 6925054820812482968
-    second: Cloud_Night_2
+      213: -3474284956024952774
+    second: Cloudy_night_2
   - first:
-      213: 3493577089711948852
-    second: Cloud_Night_3
+      213: -3718408689150763609
+    second: Cloudy_night_3
   - first:
-      213: -7070640884128617975
-    second: Cloud_Night_4
+      213: -8029275988427939798
+    second: Cloudy_night_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -112,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cloud_Night_0
+      name: Cloudy_night_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1240
-        width: 2774
-        height: 920
+        x: 565
+        y: 2143
+        width: 45
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +127,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0cad1c2ccfeb37d90800000000000000
-      internalID: -7101122194624619840
+      spriteID: 6fb504f8d4e540590800000000000000
+      internalID: -7708932974942594058
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_Night_1
+      name: Cloudy_night_1
       rect:
         serializedVersion: 2
-        x: 1878
-        y: 1264
-        width: 26
-        height: 18
+        x: 623
+        y: 2155
+        width: 23
+        height: 5
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,14 +149,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd9d25a5a121b7d30800000000000000
-      internalID: 4430154562842843612
+      spriteID: 027fe393c1403e450800000000000000
+      internalID: 6116737238165288736
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_Night_2
+      name: Cloudy_night_2
       rect:
         serializedVersion: 2
         x: 2640
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 89962a44bacba1060800000000000000
-      internalID: 6925054820812482968
+      spriteID: a3826a37d3cd8cfc0800000000000000
+      internalID: -3474284956024952774
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_Night_3
+      name: Cloudy_night_3
       rect:
         serializedVersion: 2
-        x: 2624
-        y: 1200
-        width: 12
-        height: 12
+        x: 0
+        y: 1240
+        width: 2774
+        height: 910
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +193,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 43449b37addab7030800000000000000
-      internalID: 3493577089711948852
+      spriteID: 7ad51798ffe856cc0800000000000000
+      internalID: -3718408689150763609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cloud_Night_4
+      name: Cloudy_night_4
       rect:
         serializedVersion: 2
-        x: 2664
-        y: 1122
-        width: 14
-        height: 9
+        x: 1878
+        y: 1264
+        width: 27
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 90ae827e39900ed90800000000000000
-      internalID: -7070640884128617975
+      spriteID: a20ed2a8708429090800000000000000
+      internalID: -8029275988427939798
       vertices: []
       indices: 
       edges: []
@@ -235,11 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cloud_Night_0: -7101122194624619840
-      Cloud_Night_1: 4430154562842843612
-      Cloud_Night_2: 6925054820812482968
-      Cloud_Night_3: 3493577089711948852
-      Cloud_Night_4: -7070640884128617975
+      Cloudy_night_0: -7708932974942594058
+      Cloudy_night_1: 6116737238165288736
+      Cloudy_night_2: -3474284956024952774
+      Cloudy_night_3: -3718408689150763609
+      Cloudy_night_4: -8029275988427939798
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

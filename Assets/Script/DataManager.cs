@@ -43,6 +43,7 @@ public class DataManager : MonoBehaviour
 
     public void SaveAnswer(string key, string value)
     {
+        Debug.Log("SaveAnswer : " + key + " = " + value);
         answers[key] = value;
         SaveToFile(); // sauvegarde automatique
     }
@@ -58,6 +59,7 @@ public class DataManager : MonoBehaviour
     // vérifier si c'est bien en place 
     public string GetAnswerOrPlaceholder(string key, string placeholder = "En attente...")
     {
+        Debug.Log("GetAnswerOrPlaceholder — key : " + key + " | contient : " + answers.ContainsKey(key));
         return answers.ContainsKey(key) && !string.IsNullOrEmpty(answers[key]) ? answers[key] : placeholder;
     }
 

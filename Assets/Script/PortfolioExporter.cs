@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 public class PortfolioExporter : MonoBehaviour
 {
@@ -12,6 +13,15 @@ public class PortfolioExporter : MonoBehaviour
         Instance = this;
     }
 
+    void Update()
+    {
+        if (Keyboard.current.f1Key.wasPressedThisFrame)
+        {
+            Debug.Log("Test export via F1");
+            ExportToHTML();
+        }
+    }
+
     // Ouvre le dossier de sauvegarde dans l'explorateur
     public void OpenSaveFolder()
     {
@@ -21,6 +31,7 @@ public class PortfolioExporter : MonoBehaviour
     // Génère et sauvegarde le portfolio en HTML
     public void ExportToHTML()
     {
+        Debug.Log("ExportToHtml appelé!");
         string html = GenerateHTML();
         string exportPath = Path.Combine(Application.persistentDataPath, "portfolio.html");
         File.WriteAllText(exportPath, html, System.Text.Encoding.UTF8);

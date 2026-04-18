@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class DialogueStep
 {
-    public enum StepType { Normal, Choice, PortfolioInput }
+    public enum StepType { Normal, Choice, PortfolioInput, TitleInput }
 
     [TextArea] public string npcText;
     public StepType type;
@@ -14,5 +14,4 @@ public class DialogueStep
 
     // Remplis si type == PortfolioInput
     public string dataKey;
-    public string titleKey; // pour sauvegarder le titre de la section
 }

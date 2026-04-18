@@ -39,5 +39,5 @@ MonoBehaviour:
   - npcText: '"Et comment t''aimerais appeler cette partie ?"'
     type: 2
     choices: []
-    dataKey: 
+    dataKey: '"bio"'
     titleKey: '"bio_title"'

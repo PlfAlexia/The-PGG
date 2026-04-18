@@ -11,21 +11,19 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public TMP_Text npcText;
 
-    // Zone Normal — juste un bouton Suivant
+    // Zone Normal
     public GameObject normalZone;
     public Button nextButton;
 
-    // Zone Choix — boutons générés dynamiquement
+    // Zone Choix
     public GameObject choiceZone;
     public Button choiceButtonPrefab;
     public Transform choiceContainer;
 
-    // Zone Portfolio — champ de saisie
+    // Zone Portfolio
     public GameObject portfolioZone;
     public TMP_InputField portfolioInput;
     public TMP_Text portfolioQuestion;
-    public TMP_InputField titleInput;
-    public TMP_Text titleQuestion;
 
     private DialogueSequence currentSequence;
     private int currentStepIndex;
@@ -44,7 +42,6 @@ public class DialogueManager : MonoBehaviour
         portfolioZone.SetActive(false);
     }
 
-    // Appelé par NPCDialogue
     public void StartDialogue(DialogueSequence sequence)
     {
         currentSequence = sequence;
@@ -64,7 +61,6 @@ public class DialogueManager : MonoBehaviour
         DialogueStep step = currentSequence.steps[index];
         npcText.text = step.npcText;
 
-        // Cache toutes les zones puis affiche la bonne
         normalZone.SetActive(false);
         choiceZone.SetActive(false);
         portfolioZone.SetActive(false);
@@ -74,13 +70,14 @@ public class DialogueManager : MonoBehaviour
             case DialogueStep.StepType.Normal:
                 normalZone.SetActive(true);
                 break;
-
             case DialogueStep.StepType.Choice:
                 ShowChoices(step.choices);
                 break;
-
             case DialogueStep.StepType.PortfolioInput:
                 ShowPortfolioInput(step);
+                break;
+            case DialogueStep.StepType.TitleInput:
+                ShowTitleInput(step);
                 break;
         }
     }
@@ -97,17 +94,13 @@ public class DialogueManager : MonoBehaviour
     {
         choiceZone.SetActive(true);
 
-        // Nettoie les anciens boutons
         foreach (Transform child in choiceContainer)
             Destroy(child.gameObject);
 
-        // Génère un bouton par choix
         foreach (string choice in choices)
         {
             Button btn = Instantiate(choiceButtonPrefab, choiceContainer);
             btn.GetComponentInChildren<TMP_Text>().text = choice;
-
-            // Capture la variable pour le lambda
             string captured = choice;
             btn.onClick.AddListener(() => OnChoiceSelected(captured));
         }
@@ -115,7 +108,6 @@ public class DialogueManager : MonoBehaviour
 
     private void OnChoiceSelected(string choice)
     {
-        // Pas sauvegardé — juste roleplay
         currentStepIndex++;
         ShowStep(currentStepIndex);
     }
@@ -126,14 +118,14 @@ public class DialogueManager : MonoBehaviour
         portfolioZone.SetActive(true);
         portfolioQuestion.text = DataManager.Instance.GetQuestion(step.dataKey);
         portfolioInput.text = DataManager.Instance.GetAnswerOrPlaceholder(step.dataKey, "");
+    }
 
-        // Affiche la question titre si définie
-        bool hasTitleKey = !string.IsNullOrEmpty(step.titleKey);
-        titleInput.gameObject.SetActive(hasTitleKey);
-        titleQuestion.gameObject.SetActive(hasTitleKey);
-
-        if (hasTitleKey)
-            titleQuestion.text = "Comment appeler cette section ?";
+    // --- Titre ---
+    private void ShowTitleInput(DialogueStep step)
+    {
+        portfolioZone.SetActive(true);
+        portfolioQuestion.text = step.npcText;
+        portfolioInput.text = DataManager.Instance.GetAnswerOrPlaceholder(step.dataKey, "");
     }
 
     public void OnValidatePortfolio()
@@ -142,9 +134,6 @@ public class DialogueManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(portfolioInput.text))
             DataManager.Instance.SaveAnswer(step.dataKey, portfolioInput.text);
-
-        if (!string.IsNullOrEmpty(step.titleKey) && !string.IsNullOrEmpty(titleInput.text))
-            DataManager.Instance.SaveAnswer(step.titleKey, titleInput.text);
 
         currentStepIndex++;
         ShowStep(currentStepIndex);

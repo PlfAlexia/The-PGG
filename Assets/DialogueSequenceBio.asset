@@ -17,7 +17,6 @@ MonoBehaviour:
     type: 0
     choices: []
     dataKey: 
-    titleKey: 
   - npcText: '"..."'
     type: 1
     choices:
@@ -25,19 +24,15 @@ MonoBehaviour:
     - Pas mal
     - Moyen...
     dataKey: 
-    titleKey: 
   - npcText: '"Je vois... J''aimerais en savoir plus sur toi !" '
     type: 0
     choices: []
     dataKey: 
-    titleKey: 
   - npcText: '"Parles moi de toi."'
     type: 2
     choices: []
-    dataKey: '"bio"'
-    titleKey: 
+    dataKey: bio
   - npcText: '"Et comment t''aimerais appeler cette partie ?"'
-    type: 2
+    type: 3
     choices: []
-    dataKey: '"bio"'
-    titleKey: '"bio_title"'
+    dataKey: bio_title

@@ -23,7 +23,6 @@ public class DialogueManager : MonoBehaviour
     // Zone Portfolio
     public GameObject portfolioZone;
     public TMP_InputField portfolioInput;
-    public TMP_Text portfolioQuestion;
 
     private DialogueSequence currentSequence;
     private int currentStepIndex;
@@ -116,7 +115,6 @@ public class DialogueManager : MonoBehaviour
     private void ShowPortfolioInput(DialogueStep step)
     {
         portfolioZone.SetActive(true);
-        portfolioQuestion.text = DataManager.Instance.GetQuestion(step.dataKey);
         portfolioInput.text = DataManager.Instance.GetAnswerOrPlaceholder(step.dataKey, "");
     }
 
@@ -124,7 +122,6 @@ public class DialogueManager : MonoBehaviour
     private void ShowTitleInput(DialogueStep step)
     {
         portfolioZone.SetActive(true);
-        portfolioQuestion.text = step.npcText;
         portfolioInput.text = DataManager.Instance.GetAnswerOrPlaceholder(step.dataKey, "");
     }
 

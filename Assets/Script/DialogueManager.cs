@@ -47,10 +47,6 @@ public class DialogueManager : MonoBehaviour
     // Appelé par NPCDialogue
     public void StartDialogue(DialogueSequence sequence)
     {
-        Debug.Log("StartDialogue appelé");
-        Debug.Log("dialoguePanel : " + dialoguePanel);
-        Debug.Log("Steps count : " + sequence.steps.Count);
-
         currentSequence = sequence;
         currentStepIndex = 0;
         dialoguePanel.SetActive(true);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DialogueSequenceBio
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSequence
   steps:
-  - npcText: '"Bonjour, comment tu t''appelles ?" '
+  - npcText: '"Bonjour, comment tu vas ?" '
     type: 0
     choices: []
     dataKey: 
@@ -35,4 +35,9 @@ MonoBehaviour:
     type: 2
     choices: []
     dataKey: '"bio"'
+    titleKey: 
+  - npcText: '"Et comment t''aimerais appeler cette partie ?"'
+    type: 2
+    choices: []
+    dataKey: 
     titleKey: '"bio_title"'

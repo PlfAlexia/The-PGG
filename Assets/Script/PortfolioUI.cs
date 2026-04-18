@@ -77,6 +77,7 @@ public class PortfolioUI : MonoBehaviour
 
     public void ClosePortfolio()
     {
+        Debug.Log("ClosePortfolio() appelé !");
         PortfolioPanel.SetActive(false);
     }
 }

@@ -30,15 +30,17 @@ public class PortfolioExporter : MonoBehaviour
     private string GenerateHTML()
     {
         List<string> keys = DataManager.Instance.GetAllQuestionKeys();
-
         string sections = "";
+
+        string font = DataManager.Instance.GetAnswerOrPlaceholder("global_font", "Arial");
+
         foreach (string key in keys)
         {
             string title = DataManager.Instance.GetAnswerOrPlaceholder(key + "_title", key);
             string answer = DataManager.Instance.GetAnswerOrPlaceholder(key, "Non renseigné");
             string  imagesHTML = "";
             List<string> imagePaths = ImageManager.Instance.GetImagePaths(key);
-            
+
             foreach (string path in imagePaths)
             {
                 imagesHTML += $@"
@@ -74,7 +76,7 @@ public class PortfolioExporter : MonoBehaviour
         }}
 
         body {{
-            font-family: 'Segoe UI', sans-serif;
+            font-family: '{font}', sans-serif;
             background: #0f0f0f;
             color: #ffffff;
             padding: 40px 20px;

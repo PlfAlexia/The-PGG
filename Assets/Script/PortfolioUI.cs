@@ -14,8 +14,11 @@ public class PortfolioUI : MonoBehaviour
 
     [Header("Section")]
     public TMP_Text titleText;
-    public TMP_Text questionText;
     public TMP_Text answerText;
+
+    [Header("Police")]
+    public TMP_InputField fontInput;
+    public Button applyFontButton;
 
     private List<string> keys = new List<string>();
     private int currentIndex = 0;
@@ -27,9 +30,10 @@ public class PortfolioUI : MonoBehaviour
 
     public void OpenPortfolio()
     {
-        // Récupère toutes les clés de QuestionDatabase
         keys = DataManager.Instance.GetAllQuestionKeys();
         currentIndex = 0;
+
+        fontInput.text = DataManager.Instance.GetAnswerOrPlaceholder("global_font", "");
 
         PortfolioPanel.SetActive(true);
         ShowSection(currentIndex);
@@ -52,6 +56,13 @@ public class PortfolioUI : MonoBehaviour
 
         prevButton.interactable = index > 0;
         nextButton.interactable = index < keys.Count - 1;
+    }
+
+    public void SaveFont()
+    {
+        if (string.IsNullOrEmpty(fontInput.text)) return;
+        DataManager.Instance.SaveAnswer("global_font", fontInput.text);
+        Debug.Log("Police sauvegardée : " + fontInput.text);
     }
 
     public void OnPrevSection()

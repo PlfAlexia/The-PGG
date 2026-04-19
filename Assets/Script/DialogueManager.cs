@@ -11,16 +11,16 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public TMP_Text npcText;
 
-    // Zone Normal
+    [Header("Zone Normal")]
     public GameObject normalZone;
     public Button nextButton;
 
-    // Zone Choix
+    [Header("Zone Choix")]
     public GameObject choiceZone;
     public Button choiceButtonPrefab;
     public Transform choiceContainer;
 
-    // Zone Portfolio
+    [Header("Zone Saisie")]
     public GameObject portfolioZone;
     public TMP_InputField portfolioInput;
 
@@ -73,22 +73,17 @@ public class DialogueManager : MonoBehaviour
                 ShowChoices(step.choices);
                 break;
             case DialogueStep.StepType.PortfolioInput:
-                ShowPortfolioInput(step);
-                break;
-            case DialogueStep.StepType.TitleInput:
-                ShowTitleInput(step);
+                ShowInputZone(step);
                 break;
         }
     }
 
-    // --- Normal ---
     public void OnNextButton()
     {
         currentStepIndex++;
         ShowStep(currentStepIndex);
     }
 
-    // --- Choix ---
     private void ShowChoices(List<string> choices)
     {
         choiceZone.SetActive(true);
@@ -110,16 +105,7 @@ public class DialogueManager : MonoBehaviour
         currentStepIndex++;
         ShowStep(currentStepIndex);
     }
-
-    // --- Portfolio ---
-    private void ShowPortfolioInput(DialogueStep step)
-    {
-        portfolioZone.SetActive(true);
-        portfolioInput.text = DataManager.Instance.GetAnswerOrPlaceholder(step.dataKey, "");
-    }
-
-    // --- Titre ---
-    private void ShowTitleInput(DialogueStep step)
+    private void ShowInputZone(DialogueStep step)
     {
         portfolioZone.SetActive(true);
         portfolioInput.text = DataManager.Instance.GetAnswerOrPlaceholder(step.dataKey, "");

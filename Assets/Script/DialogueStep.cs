@@ -4,7 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class DialogueStep
 {
-    public enum StepType { Normal, Choice, PortfolioInput, TitleInput }
+    public enum StepType { Normal, Choice, PortfolioInput }
 
     [TextArea] public string npcText;
     public StepType type;

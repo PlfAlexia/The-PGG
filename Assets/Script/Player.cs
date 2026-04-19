@@ -8,8 +8,6 @@ public class Player : MonoBehaviour, Move.IPlayerActions
     private Move controls;
     private PlayerMovement movement;
     private PortfolioUI portfolioUI;
-
-    // Pour l'interaction avec les PNJ
     private NPCDialogue currentNPC;
 
     void Awake()
@@ -22,7 +20,7 @@ public class Player : MonoBehaviour, Move.IPlayerActions
 
         portfolioUI = FindFirstObjectByType<PortfolioUI>();
 
-        controls.Player.SetCallbacks(this); // à comprendre
+        controls.Player.SetCallbacks(this);
     }
 
     void OnEnable()
@@ -35,7 +33,6 @@ public class Player : MonoBehaviour, Move.IPlayerActions
         controls.Player.Disable();
     }
 
-    // --- Déplacement ---
     public void OnMove(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();
@@ -55,11 +52,12 @@ public class Player : MonoBehaviour, Move.IPlayerActions
         TMP_InputField input = selected.GetComponent<TMP_InputField>();
         return input != null && input.isFocused;
     }
+
    // --- Portfolio ---
     public void OnOpenPortfolio(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        if (IsTypingInInputField()) return; // plus de duplication
+        if (IsTypingInInputField()) return;
 
         if (portfolioUI != null && !portfolioUI.PortfolioPanel.activeSelf)
             portfolioUI.OpenPortfolio();
@@ -69,21 +67,15 @@ public class Player : MonoBehaviour, Move.IPlayerActions
     public void OnInteract(InputAction.CallbackContext context)
     {
         if (!context.performed) return;
-        Debug.Log("E appuyé — currentNPC : " + currentNPC);
         if (IsTypingInInputField()) return;
         if (currentNPC == null) return;
-        Debug.Log("Appel Interact");
         currentNPC.Interact();
     }
 
-    // --- Détection des PNJ proches ---
     void OnTriggerEnter2D(Collider2D other)
     {
-        //Debug.Log("Trigger détecté : " + other.gameObject.name + " tag : " + other.tag);
         if (other.CompareTag("NPC"))
             currentNPC = other.GetComponent<NPCDialogue>();
-        
-            //Debug.Log("NPC assigné : " + currentNPC);
     }
 
     void OnTriggerExit2D(Collider2D other)

@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.IO;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 
 public class PortfolioExporter : MonoBehaviour
 {
@@ -13,30 +12,16 @@ public class PortfolioExporter : MonoBehaviour
         Instance = this;
     }
 
-    void Update()
-    {
-        if (Keyboard.current.f1Key.wasPressedThisFrame)
-        {
-            Debug.Log("Test export via F1");
-            ExportToHTML();
-        }
-    }
-
-    // Ouvre le dossier de sauvegarde dans l'explorateur
     public void OpenSaveFolder()
     {
         Application.OpenURL("file://" + Application.persistentDataPath);
     }
 
-    // Génère et sauvegarde le portfolio en HTML
     public void ExportToHTML()
     {
-        Debug.Log("ExportToHtml appelé!");
         string html = GenerateHTML();
         string exportPath = Path.Combine(Application.persistentDataPath, "portfolio.html");
         File.WriteAllText(exportPath, html, System.Text.Encoding.UTF8);
-
-        Debug.Log("Portfolio exporté : " + exportPath);
 
         // Ouvre directement le fichier dans le navigateur
         Application.OpenURL("file://" + exportPath);
@@ -52,7 +37,6 @@ public class PortfolioExporter : MonoBehaviour
             string title = DataManager.Instance.GetAnswerOrPlaceholder(key + "_title", key);
             string answer = DataManager.Instance.GetAnswerOrPlaceholder(key, "Non renseigné");
 
-            // Style par défaut en attendant PortfolioStyleManager
             sections += $@"
             <section class='section'>
                 <h2>{title}</h2>
@@ -63,10 +47,12 @@ public class PortfolioExporter : MonoBehaviour
         // Template HTML complet
         return $@"<!DOCTYPE html>
 <html lang='fr'>
+
 <head>
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Mon Portfolio</title>
+
     <style>
         * {{
             margin: 0;
@@ -132,7 +118,9 @@ public class PortfolioExporter : MonoBehaviour
             font-size: 14px;
         }}
     </style>
+
 </head>
+
 <body>
     <div class='container'>
         <header>

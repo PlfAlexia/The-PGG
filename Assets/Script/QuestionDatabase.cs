@@ -8,23 +8,10 @@ public class QuestionDatabase : ScriptableObject // on peut l'éditer directemen
     public class QuestionEntry
     {
         public string key;
-        [TextArea] public string questionText;
     }
 
     public List<QuestionEntry> questions = new List<QuestionEntry>();
 
-    // Retrouve le texte d'une question à partir de sa clé
-    public string GetQuestion(string key)
-    {
-        QuestionEntry entry = questions.Find(q => q.key == key);
-        return entry != null ? entry.questionText : "Question inconnue";
-    }
-
-    // Vérifie qu'une clé existe bien dans la base
-    public bool HasKey(string key)
-    {
-        return questions.Exists(q => q.key == key);
-    }
 
     // Retourne toutes les clés disponibles (utile pour générer le portfolio)
     public List<string> GetAllKeys()

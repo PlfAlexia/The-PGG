@@ -27,7 +27,7 @@ public class PortfolioUI : MonoBehaviour
 
     public void OpenPortfolio()
     {
-        // Récupère toutes les clés
+        // Récupère toutes les clés de QuestionDatabase
         keys = DataManager.Instance.GetAllQuestionKeys();
         currentIndex = 0;
 
@@ -45,14 +45,11 @@ public class PortfolioUI : MonoBehaviour
         // Titre de la section — utilise titleKey si dispo, sinon la clé
         titleText.text = DataManager.Instance.GetAnswerOrPlaceholder(titleKey, key);
 
-        // Question et réponse
-        questionText.text = DataManager.Instance.GetQuestion(key);
         answerText.text = DataManager.Instance.GetAnswerOrPlaceholder(key);
 
         // Pagination
         pageText.text = (index + 1) + " / " + keys.Count;
 
-        // Active/désactive les flèches selon la position
         prevButton.interactable = index > 0;
         nextButton.interactable = index < keys.Count - 1;
     }
@@ -77,7 +74,6 @@ public class PortfolioUI : MonoBehaviour
 
     public void ClosePortfolio()
     {
-        Debug.Log("ClosePortfolio() appelé !");
         PortfolioPanel.SetActive(false);
     }
 }

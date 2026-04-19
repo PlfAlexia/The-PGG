@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
     {
         transform.position = new Vector3(
             target.position.x + offset.x,
-            offset.y,  // hauteur fixe puisque déplacement horizontal uniquement
+            offset.y, 
             offset.z
         );
     }

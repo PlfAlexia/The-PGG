@@ -6,8 +6,6 @@ public class NPCDialogue : MonoBehaviour
 
     public void Interact()
     {
-       Debug.Log("Interact — DialogueManager : " + DialogueManager.Instance);
-        Debug.Log("Interact — sequence : " + sequence);
 
         if (DialogueManager.Instance == null)
         {

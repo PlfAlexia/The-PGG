@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
         playerAnimator = GetComponent<PlayerAnimator>();
     }
 
-    // Cette fonction est appelée depuis Player.cs
     public void SetMoveInput(Vector2 input)
     {
         moveInput = input;

@@ -47,7 +47,7 @@ MonoBehaviour:
     choices: []
     dataKey: project
   - npcText: '"Un autre illustration ?"'
-    type: 3
+    type: 1
     choices:
     - label: Oui !
       nextStepIndex: 5

@@ -56,6 +56,7 @@ public class PortfolioExporter : MonoBehaviour
             <section class='section'>
                 <h2>{title}</h2>
                 <p>{answer}</p>
+                {imagesHTML}
             </section>";
         }
 

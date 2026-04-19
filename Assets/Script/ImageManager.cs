@@ -27,6 +27,7 @@ public class ImageManager : MonoBehaviour
             {
                 if (paths.Length > 0)
                 {
+                    string cleanPath = paths[0].Replace("\\", "/");
                     string imageKey = sectionKey + "_image_" + currentImageIndex;
                     DataManager.Instance.SaveAnswer(imageKey, paths[0]);
                     currentImageIndex++;

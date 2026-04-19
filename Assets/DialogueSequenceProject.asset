@@ -21,8 +21,10 @@ MonoBehaviour:
   - npcText: '"..."'
     type: 1
     choices:
-    - "Bien s\xFBr!"
-    - T'aider ?
+    - label: "Bien s\xFBr !"
+      nextStepIndex: 2
+    - label: T'aider ?
+      nextStepIndex: 2
     dataKey: project
   - npcText: "\"D\xE9cris moi juste un de tes projets !\" "
     type: 2
@@ -32,3 +34,27 @@ MonoBehaviour:
     type: 2
     choices: []
     dataKey: project_title
+  - npcText: "\"T'aimerais peut-\xEAtre me montrer une illustration ?\""
+    type: 1
+    choices:
+    - label: Oui !
+      nextStepIndex: 5
+    - label: Non, merci !
+      nextStepIndex: 7
+    dataKey: project
+  - npcText: '"..."'
+    type: 3
+    choices: []
+    dataKey: project
+  - npcText: '"Un autre illustration ?"'
+    type: 3
+    choices:
+    - label: Oui !
+      nextStepIndex: 5
+    - label: Non merci !
+      nextStepIndex: 7
+    dataKey: project
+  - npcText: '"Okay, merci pour ton aide !"'
+    type: 0
+    choices: []
+    dataKey: project

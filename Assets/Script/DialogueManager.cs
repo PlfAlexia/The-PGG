@@ -75,6 +75,9 @@ public class DialogueManager : MonoBehaviour
             case DialogueStep.StepType.PortfolioInput:
                 ShowInputZone(step);
                 break;
+            case DialogueStep.StepType.ImageInput:
+                ShowImageInput(step);
+                break;
         }
     }
 
@@ -84,31 +87,46 @@ public class DialogueManager : MonoBehaviour
         ShowStep(currentStepIndex);
     }
 
-    private void ShowChoices(List<string> choices)
+    private void ShowChoices(List<ChoiceOption> choices)
     {
         choiceZone.SetActive(true);
 
         foreach (Transform child in choiceContainer)
             Destroy(child.gameObject);
 
-        foreach (string choice in choices)
+        foreach (ChoiceOption option in choices)
         {
             Button btn = Instantiate(choiceButtonPrefab, choiceContainer);
-            btn.GetComponentInChildren<TMP_Text>().text = choice;
-            string captured = choice;
-            btn.onClick.AddListener(() => OnChoiceSelected(captured));
+            btn.GetComponentInChildren<TMP_Text>().text = option.label;
+            int capturedIndex = option.nextStepIndex;
+            btn.onClick.AddListener(() => OnChoiceSelected(capturedIndex));
         }
     }
 
-    private void OnChoiceSelected(string choice)
+    private void OnChoiceSelected(int nextStepIndex)
     {
-        currentStepIndex++;
+        currentStepIndex = nextStepIndex;
         ShowStep(currentStepIndex);
     }
     private void ShowInputZone(DialogueStep step)
     {
         portfolioZone.SetActive(true);
         portfolioInput.text = DataManager.Instance.GetAnswerOrPlaceholder(step.dataKey, "");
+    }
+
+    private void ShowImageInput(DialogueStep step)
+    {
+        string firstImage = DataManager.Instance.GetAnswerOrPlaceholder(
+            step.dataKey + "_image_0", "");
+
+        if (string.IsNullOrEmpty(firstImage))
+            ImageManager.Instance.ResetImageIndex();
+
+        ImageManager.Instance.OpenAndSaveImage(step.dataKey, () =>
+        {
+            currentStepIndex++;
+            ShowStep(currentStepIndex);
+        });
     }
 
     public void OnValidatePortfolio()

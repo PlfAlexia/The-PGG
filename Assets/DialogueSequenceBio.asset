@@ -20,9 +20,12 @@ MonoBehaviour:
   - npcText: '"..."'
     type: 1
     choices:
-    - 'Bien ! '
-    - Pas mal
-    - Moyen...
+    - label: Bien!
+      nextStepIndex: 2
+    - label: Pas mal
+      nextStepIndex: 2
+    - label: Bof..
+      nextStepIndex: 2
     dataKey: 
   - npcText: '"Je vois... J''aimerais en savoir plus sur toi !" '
     type: 0

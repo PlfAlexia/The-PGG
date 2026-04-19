@@ -36,6 +36,19 @@ public class PortfolioExporter : MonoBehaviour
         {
             string title = DataManager.Instance.GetAnswerOrPlaceholder(key + "_title", key);
             string answer = DataManager.Instance.GetAnswerOrPlaceholder(key, "Non renseigné");
+            string  imagesHTML = "";
+            List<string> imagePaths = ImageManager.Instance.GetImagePaths(key);
+            
+            foreach (string path in imagePaths)
+            {
+                imagesHTML += $@"
+                <div class='image-container'>
+                    <img src='file:///{path.Replace("\\", "/")}' 
+                        alt='Illustration' 
+                        class='portfolio-image'/>
+                </div>";
+            }
+
 
             sections += $@"
             <section class='section'>
@@ -109,6 +122,16 @@ public class PortfolioExporter : MonoBehaviour
             color: #cccccc;
             line-height: 1.8;
             font-size: 16px;
+        }}
+
+        .portfolio-image {{
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }}
+
+        .image-container {{
+            margin-top: 15px;
         }}
 
         footer {{

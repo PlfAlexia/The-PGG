@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     private Animator animator;
-    private Vector2 lastMoveInput;
+    //private Vector2 lastMoveInput;
 
     // Noms des paramètres dans l'Animator Controller
     private static readonly int IsMoving = Animator.StringToHash("isMoving");

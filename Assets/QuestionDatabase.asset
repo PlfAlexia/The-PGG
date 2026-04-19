@@ -14,8 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestionDatabase
   questions:
   - key: bio
-    questionText: "Pr\xE9sente toi "
-  - key: skills
-    questionText: "Quelles sont tes comp\xE9tences ?"
   - key: project
-    questionText: "D\xE9cris un de tes projet"

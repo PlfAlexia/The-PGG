@@ -35,7 +35,8 @@ MonoBehaviour:
     type: 2
     choices: []
     dataKey: bio
-  - npcText: '"Et comment t''aimerais appeler cette partie ?"'
-    type: 3
+  - npcText: "\"Interessant, je crois que quelqu'un \xE0 besoin de toi plus loin,
+      mais reviens si tu veux m'en dire plus !\""
+    type: 0
     choices: []
-    dataKey: bio_title
+    dataKey: bio

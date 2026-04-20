@@ -1,9 +1,9 @@
 # The-PGG--P2I
 Voici le repository contenant les données nécessaires au lancement de mon projet p2i : The Portfolio Generator Game
 
-##*Guide d'installation*
+## *Guide d'installation*
 
-###1.1. Installation
+### 1.1. Installation
 
 - Cloner le repository disponible sur github ou télécharger depuis github
 - Ouvrir le projet avec Unity Hub (version 6000.3.9f1)
@@ -13,7 +13,7 @@ Voici le repository contenant les données nécessaires au lancement de mon proj
 - Ouvrir la scène MainScene
 - Cliquer sur play
 
-###1.2. Dépendances
+### 1.2. Dépendances
 
 /!\ Ce projet utilise les packages Unity suivants :
 - TextMeshPro
@@ -32,13 +32,13 @@ Ils devraient automatiquement être installés via le Package Manager lors de l�
 
 - Aller dans Window > TextMeshPro > Import TMP Essential Ressources
 
-###1.3. Dépannage
+### 1.3. Dépannage
 
 En cas d’erreur indiquant un package manquant : 
 Aller dans Window > Package Manager > Reset Packages to defaults
 
 
-*Fonctionnement du jeu :*
+## *Fonctionnement du jeu :*
 
 Le joueur se déplace grâce aux flèches du clavier. Il se déplace horizontalement et interragit avec les PNJ (Personnage Non Jouable). Pour interagir avec il faut presser la touche "E", et dialoguer avec le PNJ afin d'entrer les différentes données du portfolio.
 

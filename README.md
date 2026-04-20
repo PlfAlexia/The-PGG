@@ -1,22 +1,53 @@
 # The-PGG--P2I
 Voici le repository contenant les données nécessaires au lancement de mon projet p2i : The Portfolio Generator Game
 
+##*Guide d'installation*
+
+###1.1. Installation
+
+- Cloner le repository disponible sur github ou télécharger depuis github
+- Ouvrir le projet avec Unity Hub (version 6000.3.9f1)
+    - Cliquer sur “Add project”
+    - Sélectionner le projet
+    - Vérifier la version d’Unity
+- Ouvrir la scène MainScene
+- Cliquer sur play
+
+###1.2. Dépendances
+
+/!\ Ce projet utilise les packages Unity suivants :
+- TextMeshPro
+- Input System
+- 
+Ils devraient automatiquement être installés via le Package Manager lors de l’ouverture du projet. Si jamais, ils ne sont pas activés ou nécessitent une configuration :
+
+*Activer Input System*
+
+- Aller dans Edit > Project Settings > Player
+- Dans “Active Input Handling”, sélectionner : “Input System Package (New)” ou “Both”
+- Redémarrer Unity si besoin
+
+  
+*Initialiser TextMeshPro*
+
+- Aller dans Window > TextMeshPro > Import TMP Essential Ressources
+
+###1.3. Dépannage
+
+En cas d’erreur indiquant un package manquant : 
+Aller dans Window > Package Manager > Reset Packages to defaults
+
+
 *Fonctionnement du jeu :*
 
-Le carré représente le joueur, il se déplace grâce aux flèches du clavier.
+Le joueur se déplace grâce aux flèches du clavier. Il se déplace horizontalement et interragit avec les PNJ (Personnage Non Jouable). Pour interagir avec il faut presser la touche "E", et dialoguer avec le PNJ afin d'entrer les différentes données du portfolio.
 
-Les ronds représentes les PNJ (Personnages Non Jouables), pour interagir avec il faut presser la touche "E", appuyer dans l'emplacement correspondant pour entrer du texte et appuyer sur "button" afin d'enregistrer automatiquement les données et fermes le cadre.
+La touche "P" permet d'ouvrir les données enregistrées selon les PNJ avec qui le joueur a eu une interraction sous forme de Panel de Portfolio. Ce panel permet de prévisualiser les données, ouvrir le fichier de sauvegarde, exporter en HTML et changer la police du fichier exporté.
 
-La touche "P" permet d'ouvrir les données enregistrées selon les PNJ avec qui le joueur a eu une interraction.
+*Limite du jeu*
 
-*Détails de code :*
+Pour le moment le jeu permet de parler avec deux PNJ afin de faire une présentation de soi et d'un projet.
 
-Le code est encore beaucoup commenté pour m'aider à me retrouver mais sera nettoyer dans sa version finale.
-Le script "Move" est un script généré à partir du "Input Action Asset" nommé "Move" que j'ai créé dans Unity.
-*Autre / Avancé du projet :*
 
-Le cahier des charges V3 présentet l'avancé du projet à jour. Pour l'instant les PNJ n'ont qu'une question mais ils auront bientôt un dialogue afin de rendre le jeu plus interactif.
-
-Enfin, l'artistique étant au second plan, le plateau de jeu sera retravailler lorsque l'aspect technique du projet sera au point
 
 
